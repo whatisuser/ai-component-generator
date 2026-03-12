@@ -7,7 +7,7 @@ type CodePanelProps = {
 
 export function CodePanel({ code, isLoading }: CodePanelProps) {
   return (
-    <section className="flex min-h-[28rem] flex-col rounded-[1.75rem] border border-[var(--border)] bg-slate-950 text-slate-100 shadow-[var(--shadow)]">
+    <section className="flex min-h-[16rem] flex-col rounded-[1.75rem] border border-[var(--border)] bg-slate-950 text-slate-100 shadow-[var(--shadow)] lg:min-h-[28rem]">
       <div className="flex items-center justify-between border-b border-slate-800 px-5 py-4">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
@@ -18,7 +18,7 @@ export function CodePanel({ code, isLoading }: CodePanelProps) {
           </h2>
         </div>
       </div>
-      <div className="flex-1 overflow-auto">
+      <div className="min-w-0 overflow-auto max-h-[20rem] lg:max-h-[32rem]">
         {isLoading ? (
           <LoadingState
             title="Generating component"
@@ -26,7 +26,7 @@ export function CodePanel({ code, isLoading }: CodePanelProps) {
             invert
           />
         ) : code ? (
-          <pre className="h-full p-5 text-sm leading-7 text-slate-200">
+          <pre className="h-full p-5 text-sm leading-7 text-slate-200 overflow-x-auto whitespace-pre-wrap break-all min-w-0">
             <code>{code}</code>
           </pre>
         ) : (

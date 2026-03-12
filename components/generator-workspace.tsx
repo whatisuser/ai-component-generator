@@ -64,7 +64,7 @@ export function GeneratorWorkspace() {
   const previewSource = result ? createPreviewSource(result.code) : null;
 
   return (
-    <section className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
+    <section className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_1.5fr]">
       <div className="flex flex-col gap-6">
         <PromptForm
           prompt={prompt}
@@ -74,7 +74,7 @@ export function GeneratorWorkspace() {
         />
         <CodePanel code={result?.code ?? ""} isLoading={isLoading} />
       </div>
-      <div className="flex min-h-[32rem] flex-col">
+      <div className="flex min-h-[24rem] flex-col lg:min-h-[48rem]">
         {!result && !isLoading && !error ? (
           <EmptyState
             title="No component generated yet"
@@ -83,6 +83,7 @@ export function GeneratorWorkspace() {
         ) : (
           <PreviewPanel
             code={previewSource?.previewCode ?? ""}
+            rawCode={result?.code ?? ""}
             componentName={previewSource?.componentName ?? "GeneratedComponent"}
             isLoading={isLoading}
             error={error}

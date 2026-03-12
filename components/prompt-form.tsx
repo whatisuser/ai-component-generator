@@ -36,7 +36,7 @@ export function PromptForm({
           placeholder="Build a pricing card with three tiers"
           className="min-h-36 w-full rounded-[1.4rem] border border-slate-200 bg-white px-4 py-3 text-sm leading-6 text-slate-900 shadow-inner outline-none transition focus:border-amber-400 focus:ring-4 focus:ring-amber-100"
         />
-        <div className="flex flex-wrap items-center justify-between gap-3">
+        <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
           <p className="text-xs uppercase tracking-[0.18em] text-slate-400">
             Generates a single self-contained React component
           </p>
@@ -44,7 +44,7 @@ export function PromptForm({
             type="button"
             onClick={onSubmit}
             disabled={isLoading}
-            className="inline-flex items-center justify-center rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:bg-slate-400"
+            className="inline-flex w-full items-center justify-center rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:bg-slate-400 sm:w-auto"
           >
             {isLoading ? "Generating..." : "Generate component"}
           </button>
