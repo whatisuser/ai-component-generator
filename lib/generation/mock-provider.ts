@@ -49,7 +49,7 @@ const templates: MockComponentTemplate[] = [
           Three tiers with clear hierarchy, a featured middle plan, and CTA emphasis.
         </p>
       </div>
-      <div className="mt-10 grid gap-6 lg:grid-cols-3">
+      <div className="mt-10 grid gap-6 @lg:grid-cols-3">
         {plans.map((plan) => (
           <article
             key={plan.name}
@@ -107,7 +107,7 @@ const templates: MockComponentTemplate[] = [
   ];
 
   return (
-    <section className="mx-auto grid w-full max-w-5xl gap-6 rounded-[2rem] bg-white p-6 text-slate-900 shadow-[0_24px_80px_-32px_rgba(15,23,42,0.35)] lg:grid-cols-[1.2fr_0.8fr]">
+    <section className="mx-auto grid w-full max-w-5xl gap-6 rounded-[2rem] bg-white p-6 text-slate-900 shadow-[0_24px_80px_-32px_rgba(15,23,42,0.35)] @lg:grid-cols-[1.2fr_0.8fr]">
       <div className="rounded-[1.75rem] bg-slate-950 p-6 text-white">
         <p className="text-sm font-semibold uppercase tracking-[0.24em] text-cyan-300">
           Weekly dashboard
@@ -115,7 +115,7 @@ const templates: MockComponentTemplate[] = [
         <h2 className="mt-4 text-3xl font-semibold tracking-tight">
           ${escapeTemplateLiteral(prompt)}
         </h2>
-        <div className="mt-8 grid gap-4 sm:grid-cols-3">
+        <div className="mt-8 grid gap-4 @sm:grid-cols-3">
           {metrics.map((metric) => (
             <div key={metric.label} className="rounded-3xl border border-white/10 bg-white/5 p-4">
               <p className="text-sm text-slate-300">{metric.label}</p>
@@ -173,7 +173,7 @@ function defaultComponent(prompt: string) {
         This fallback template keeps the flow working for arbitrary prompts while preserving
         the same API shape a real LLM provider would return.
       </p>
-      <div className="mt-8 grid gap-4 sm:grid-cols-3">
+      <div className="mt-8 grid gap-4 @sm:grid-cols-3">
         {highlights.map((item) => (
           <div key={item} className="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-4">
             <p className="text-sm font-medium text-slate-700">{item}</p>

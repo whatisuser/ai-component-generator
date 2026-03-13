@@ -174,7 +174,7 @@ function PreviewFrameContent({
 
   return (
     <PreviewRuntimeBoundary resetKey={resetKey}>
-      <div className="w-full max-w-full overflow-hidden">
+      <div className="@container w-full max-w-full overflow-hidden">
         <LivePreview />
       </div>
     </PreviewRuntimeBoundary>

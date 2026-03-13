@@ -13,6 +13,6 @@ export function createPreviewSource(rawCode: string): PreviewSource {
 
   return {
     componentName,
-    previewCode: `${componentDeclaration}\nrender(<${componentName} />);`,
+    previewCode: `${componentDeclaration}\nrender(<div className="@container w-full h-full"><${componentName} /></div>);`,
   };
 }
