@@ -1,0 +1,3 @@
+## 2026-04-04 - Enhance Loading and Error States with ARIA Live Regions
+**Learning:** Found that dynamic status changes like 'Loading' or 'Error' states in React components need to be announced to screen readers. React state changes don't automatically trigger screen reader announcements unless appropriate ARIA attributes are used.
+**Action:** Always add `role="status"` and `aria-live="polite"` to loading states, and `role="alert"` and `aria-live="assertive"` to error states. Also remember to add `aria-hidden="true"` to CSS-only spinner icons so screen readers don't try to announce empty visual elements.
