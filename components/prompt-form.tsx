@@ -33,6 +33,14 @@ export function PromptForm({
           id="prompt"
           value={prompt}
           onChange={(event) => onPromptChange(event.target.value)}
+          onKeyDown={(event) => {
+            if (event.key === "Enter" && (event.metaKey || event.ctrlKey)) {
+              event.preventDefault();
+              if (!isLoading) {
+                onSubmit();
+              }
+            }
+          }}
           placeholder="Build a pricing card with three tiers"
           className="min-h-36 w-full rounded-[1.4rem] border border-slate-200 bg-white px-4 py-3 text-sm leading-6 text-slate-900 shadow-inner outline-none transition focus:border-amber-400 focus:ring-4 focus:ring-amber-100"
         />
@@ -44,9 +52,16 @@ export function PromptForm({
             type="button"
             onClick={onSubmit}
             disabled={isLoading}
-            className="inline-flex w-full items-center justify-center rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:bg-slate-400 sm:w-auto"
+            title="Cmd/Ctrl + Enter to generate"
+            className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:bg-slate-400 sm:w-auto"
           >
             {isLoading ? "Generating..." : "Generate component"}
+            {!isLoading && (
+              <span className="hidden sm:inline-flex text-slate-400 items-center border border-slate-600 rounded px-1.5 py-0.5 text-[10px] leading-none font-sans">
+                <kbd className="font-sans">⌘</kbd>
+                <kbd className="font-sans ml-1">↵</kbd>
+              </span>
+            )}
           </button>
         </div>
       </div>
