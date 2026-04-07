@@ -34,9 +34,9 @@ export function PromptForm({
           value={prompt}
           onChange={(event) => onPromptChange(event.target.value)}
           onKeyDown={(event) => {
-            if (event.key === 'Enter' && (event.metaKey || event.ctrlKey)) {
+            if (event.key === "Enter" && (event.metaKey || event.ctrlKey)) {
               event.preventDefault();
-              if (prompt.trim() && !isLoading) {
+              if (!isLoading && prompt.trim()) {
                 onSubmit();
               }
             }
@@ -49,18 +49,23 @@ export function PromptForm({
             Generates a single self-contained React component
           </p>
           <div className="flex items-center gap-3">
-            <span className="hidden text-xs font-medium text-slate-400 sm:inline-block">
-              <kbd className="rounded border border-slate-200 bg-slate-50 px-1.5 py-0.5 font-sans font-semibold text-slate-500">⌘</kbd>
-              {' '}
-              <kbd className="rounded border border-slate-200 bg-slate-50 px-1.5 py-0.5 font-sans font-semibold text-slate-500">Enter</kbd>
-              {' '}
-              to submit
+            <span
+              className="hidden text-xs font-medium text-slate-400 sm:inline-block"
+              aria-hidden="true"
+            >
+              <kbd className="rounded border border-slate-200 bg-slate-50 px-1.5 py-0.5 font-sans">
+                ⌘
+              </kbd>{" "}
+              +{" "}
+              <kbd className="rounded border border-slate-200 bg-slate-50 px-1.5 py-0.5 font-sans">
+                Enter
+              </kbd>
             </span>
             <button
               type="button"
               onClick={onSubmit}
-              disabled={isLoading || !prompt.trim()}
-              className="inline-flex w-full items-center justify-center rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:bg-slate-400 sm:w-auto"
+              disabled={isLoading}
+              className="inline-flex w-full items-center justify-center rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:bg-slate-400 sm:w-auto"
             >
               {isLoading ? "Generating..." : "Generate component"}
             </button>
