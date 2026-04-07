@@ -33,6 +33,14 @@ export function PromptForm({
           id="prompt"
           value={prompt}
           onChange={(event) => onPromptChange(event.target.value)}
+          onKeyDown={(event) => {
+            if (event.key === "Enter" && (event.metaKey || event.ctrlKey)) {
+              event.preventDefault();
+              if (!isLoading && prompt.trim()) {
+                onSubmit();
+              }
+            }
+          }}
           placeholder="Build a pricing card with three tiers"
           className="min-h-36 w-full rounded-[1.4rem] border border-slate-200 bg-white px-4 py-3 text-sm leading-6 text-slate-900 shadow-inner outline-none transition focus:border-amber-400 focus:ring-4 focus:ring-amber-100"
         />
@@ -40,14 +48,28 @@ export function PromptForm({
           <p className="text-xs uppercase tracking-[0.18em] text-slate-400">
             Generates a single self-contained React component
           </p>
-          <button
-            type="button"
-            onClick={onSubmit}
-            disabled={isLoading}
-            className="inline-flex w-full items-center justify-center rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:bg-slate-400 sm:w-auto"
-          >
-            {isLoading ? "Generating..." : "Generate component"}
-          </button>
+          <div className="flex items-center gap-3">
+            <span
+              className="hidden text-xs font-medium text-slate-400 sm:inline-block"
+              aria-hidden="true"
+            >
+              <kbd className="rounded border border-slate-200 bg-slate-50 px-1.5 py-0.5 font-sans">
+                ⌘
+              </kbd>{" "}
+              +{" "}
+              <kbd className="rounded border border-slate-200 bg-slate-50 px-1.5 py-0.5 font-sans">
+                Enter
+              </kbd>
+            </span>
+            <button
+              type="button"
+              onClick={onSubmit}
+              disabled={isLoading}
+              className="inline-flex w-full items-center justify-center rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:bg-slate-400 sm:w-auto"
+            >
+              {isLoading ? "Generating..." : "Generate component"}
+            </button>
+          </div>
         </div>
       </div>
     </section>
