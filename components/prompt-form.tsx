@@ -34,7 +34,7 @@ export function PromptForm({
           value={prompt}
           onChange={(event) => onPromptChange(event.target.value)}
           onKeyDown={(event) => {
-            if ((event.metaKey || event.ctrlKey) && event.key === "Enter") {
+            if (event.key === "Enter" && (event.metaKey || event.ctrlKey)) {
               event.preventDefault();
               if (!isLoading && prompt.trim()) {
                 onSubmit();
@@ -51,40 +51,31 @@ export function PromptForm({
               <kbd className="font-sans">⌘</kbd> <kbd className="font-sans">Enter</kbd>
             </span>
           </p>
-          <button
-            type="button"
-            onClick={onSubmit}
-            disabled={isLoading || !prompt.trim()}
-            className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:bg-slate-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-950 focus-visible:ring-offset-2 sm:w-auto"
-          >
-            {isLoading ? (
-              <>
-                <svg
-                  className="h-4 w-4 animate-spin text-white"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                >
-                  <circle
-                    className="opacity-25"
-                    cx="12"
-                    cy="12"
-                    r="10"
-                    stroke="currentColor"
-                    strokeWidth="4"
-                  />
-                  <path
-                    className="opacity-75"
-                    fill="currentColor"
-                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                  />
-                </svg>
-                Generating...
-              </>
-            ) : (
-              "Generate component"
-            )}
-          </button>
+          <div className="flex items-center gap-3">
+            <span
+              className="hidden text-xs font-medium text-slate-400 sm:inline-block"
+              aria-hidden="true"
+            >
+              <kbd className="rounded border border-slate-200 bg-slate-50 px-1.5 py-0.5 font-sans">
+                ⌘
+              </kbd>{" "}
+              +{" "}
+              <kbd className="rounded border border-slate-200 bg-slate-50 px-1.5 py-0.5 font-sans">
+                Enter
+              </kbd>
+            </span>
+            <button
+              type="button"
+              onClick={onSubmit}
+              disabled={isLoading}
+              className="inline-flex w-full items-center justify-center rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:bg-slate-400 sm:w-auto"
+            >
+              {isLoading && (
+                <div className="mr-2 h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white" />
+              )}
+              {isLoading ? "Generating..." : "Generate component"}
+            </button>
+          </div>
         </div>
       </div>
     </section>
