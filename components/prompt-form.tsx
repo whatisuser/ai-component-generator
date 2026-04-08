@@ -11,6 +11,15 @@ export function PromptForm({
   onSubmit,
   isLoading,
 }: PromptFormProps) {
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (event.key === "Enter" && (event.metaKey || event.ctrlKey)) {
+      event.preventDefault();
+      if (!isLoading && prompt.trim()) {
+        onSubmit();
+      }
+    }
+  };
+
   return (
     <section className="rounded-[1.75rem] border border-[var(--border)] bg-[var(--panel)] p-5 shadow-[var(--shadow)] backdrop-blur sm:p-6">
       <div className="flex flex-col gap-4">
@@ -33,22 +42,25 @@ export function PromptForm({
           id="prompt"
           value={prompt}
           onChange={(event) => onPromptChange(event.target.value)}
+          onKeyDown={handleKeyDown}
           placeholder="Build a pricing card with three tiers"
-          className="min-h-36 w-full rounded-[1.4rem] border border-slate-200 bg-white px-4 py-3 text-sm leading-6 text-slate-900 shadow-inner outline-none transition focus:border-amber-400 focus:ring-4 focus:ring-amber-100"
+          className="min-h-36 w-full rounded-[1.4rem] border border-slate-200 bg-white px-4 py-3 text-sm leading-6 text-slate-900 shadow-inner outline-none transition focus-visible:border-amber-400 focus-visible:ring-4 focus-visible:ring-amber-100"
         />
         <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
           <p className="text-xs uppercase tracking-[0.18em] text-slate-400">
-            Generates a single self-contained React component
+            Generates a single self-contained React component{" "}
+            <span className="hidden sm:inline-block md:hidden lg:inline-block">
+              — Press ⌘/Ctrl + Enter to submit
+            </span>
           </p>
           <button
             type="button"
             onClick={onSubmit}
             disabled={isLoading}
-            className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-950 disabled:cursor-not-allowed disabled:bg-slate-400 disabled:opacity-70 sm:w-auto"
+            className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:bg-slate-400 sm:w-auto"
           >
             {isLoading && (
               <svg
-                aria-hidden="true"
                 className="h-4 w-4 animate-spin text-white/70"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
