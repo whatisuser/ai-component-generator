@@ -1,3 +1,3 @@
-## 2024-05-15 - Added keyboard shortcut to AI prompt form
-**Learning:** For AI generation workflows, users typically want to submit via keyboard (Cmd/Ctrl+Enter) since they are typing long prompts, but we need to visually surface this shortcut so they discover it. The visual hint should ideally only show up on desktop breakpoints where hardware keyboards are presumed.
-**Action:** Always map Cmd/Ctrl+Enter to primary generation actions in multi-line prompt textareas, and include `<kbd>` hints on desktop breakpoints.
+## 2026-04-05 - Adding visual feedback to async form submissions
+**Learning:** Combining a loading spinner alongside keyboard shortcuts (Cmd/Ctrl + Enter) significantly improves both perceived performance during async generation operations and the discoverability of power-user features. Users need an immediate visual cue that their keyboard shortcut worked.
+**Action:** When adding shortcut submissions to forms, ensure the visual disabled/loading state applies instantly and clearly since the user's focus is usually on the input rather than the submit button.
