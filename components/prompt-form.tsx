@@ -42,11 +42,14 @@ export function PromptForm({
             }
           }}
           placeholder="Build a pricing card with three tiers"
-          className="min-h-36 w-full rounded-[1.4rem] border border-slate-200 bg-white px-4 py-3 text-sm leading-6 text-slate-900 shadow-inner outline-none transition focus:border-amber-400 focus:ring-4 focus:ring-amber-100"
+          className="min-h-36 w-full rounded-[1.4rem] border border-slate-200 bg-white px-4 py-3 text-sm leading-6 text-slate-900 shadow-inner outline-none transition focus-visible:border-amber-400 focus-visible:ring-4 focus-visible:ring-amber-100"
         />
         <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
-          <p className="text-xs uppercase tracking-[0.18em] text-slate-400">
+          <p className="flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-slate-400">
             Generates a single self-contained React component
+            <span className="hidden rounded-md border border-slate-200 bg-slate-50 px-1.5 py-0.5 text-[10px] font-medium tracking-normal text-slate-500 sm:inline-block">
+              <kbd className="font-sans">⌘</kbd> <kbd className="font-sans">Enter</kbd>
+            </span>
           </p>
           <div className="flex items-center gap-3">
             <span
