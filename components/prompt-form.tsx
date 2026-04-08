@@ -67,6 +67,9 @@ export function PromptForm({
               disabled={isLoading}
               className="inline-flex w-full items-center justify-center rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:bg-slate-400 sm:w-auto"
             >
+              {isLoading && (
+                <div className="mr-2 h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white" />
+              )}
               {isLoading ? "Generating..." : "Generate component"}
             </button>
           </div>
