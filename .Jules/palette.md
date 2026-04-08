@@ -1,3 +1,3 @@
-## 2026-04-01 - Keyboard shortcuts for textareas
-**Learning:** Adding keyboard shortcuts (Cmd+Enter/Ctrl+Enter) to textareas is a critical UX pattern for apps with prompt inputs. The shortcut hint (<kbd>) inside the submit button is a good discoverability pattern but it must also respect accessibility states (like loading).
-**Action:** When adding shortcuts to inputs, ensure visual hints are added to the submission target, and disabled correctly during loading/async states.
+## 2026-04-05 - Adding visual feedback to async form submissions
+**Learning:** Combining a loading spinner alongside keyboard shortcuts (Cmd/Ctrl + Enter) significantly improves both perceived performance during async generation operations and the discoverability of power-user features. Users need an immediate visual cue that their keyboard shortcut worked.
+**Action:** When adding shortcut submissions to forms, ensure the visual disabled/loading state applies instantly and clearly since the user's focus is usually on the input rather than the submit button.
