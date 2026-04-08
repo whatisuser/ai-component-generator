@@ -87,14 +87,20 @@ class PreviewRuntimeBoundary extends Component<
 function PreviewPlaceholder({
   title,
   description,
+  isLoading,
 }: {
   title: string;
   description: string;
+  isLoading?: boolean;
 }) {
   return (
     <div className="flex min-h-full items-center justify-center bg-slate-50 p-5">
       <div className="w-full max-w-md rounded-3xl border border-slate-200 bg-white p-5 text-center shadow-sm">
-        <div className="mx-auto h-10 w-10 rounded-full border border-slate-200 bg-slate-100" />
+        {isLoading ? (
+          <div aria-hidden="true" className="mx-auto h-10 w-10 animate-spin rounded-full border-4 border-slate-200 border-t-slate-500" />
+        ) : (
+          <div aria-hidden="true" className="mx-auto h-10 w-10 rounded-full border border-slate-200 bg-slate-100" />
+        )}
         <h3 className="mt-4 text-base font-semibold text-slate-900">{title}</h3>
         <p className="mt-2 text-sm leading-6 text-slate-600">{description}</p>
       </div>
@@ -143,6 +149,7 @@ function PreviewFrameContent({
   if (isLoading) {
     return (
       <PreviewPlaceholder
+        isLoading
         title={isSlow ? "Preview is taking longer than expected" : "Preparing preview"}
         description={
           isSlow
@@ -300,7 +307,7 @@ export function PreviewPanel({
           <button
             type="button"
             onClick={() => setReloadKey((current) => current + 1)}
-            className="rounded-full border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-700 transition hover:border-slate-300 hover:text-slate-900"
+            className="rounded-full border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-700 transition hover:border-slate-300 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-1"
           >
             Reload preview
           </button>
@@ -308,7 +315,7 @@ export function PreviewPanel({
             type="button"
             onClick={handleCopyCode}
             disabled={!rawCode}
-            className="rounded-full border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-700 transition hover:border-slate-300 hover:text-slate-900 disabled:cursor-not-allowed disabled:opacity-60"
+            className="rounded-full border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-700 transition hover:border-slate-300 hover:text-slate-900 disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-1"
           >
             {copyState === "copied"
               ? "Copied"
@@ -320,7 +327,7 @@ export function PreviewPanel({
             <button
               type="button"
               onClick={() => setViewportMode("desktop")}
-              className={`rounded-full px-3 py-1.5 text-sm font-medium transition ${
+              className={`rounded-full px-3 py-1.5 text-sm font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-1 ${
                 viewportMode === "desktop"
                   ? "bg-slate-900 text-white"
                   : "text-slate-600 hover:text-slate-900"
@@ -331,7 +338,7 @@ export function PreviewPanel({
             <button
               type="button"
               onClick={() => setViewportMode("mobile")}
-              className={`rounded-full px-3 py-1.5 text-sm font-medium transition ${
+              className={`rounded-full px-3 py-1.5 text-sm font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-1 ${
                 viewportMode === "mobile"
                   ? "bg-slate-900 text-white"
                   : "text-slate-600 hover:text-slate-900"
