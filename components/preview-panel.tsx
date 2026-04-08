@@ -300,7 +300,7 @@ export function PreviewPanel({
           <button
             type="button"
             onClick={() => setReloadKey((current) => current + 1)}
-            className="rounded-full border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-700 transition hover:border-slate-300 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2"
+            className="rounded-full border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-700 transition hover:border-slate-300 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-1"
           >
             Reload preview
           </button>
@@ -308,7 +308,7 @@ export function PreviewPanel({
             type="button"
             onClick={handleCopyCode}
             disabled={!rawCode}
-            className="rounded-full border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-700 transition hover:border-slate-300 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
+            className="rounded-full border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-700 transition hover:border-slate-300 hover:text-slate-900 disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-1"
           >
             {copyState === "copied"
               ? "Copied"
@@ -320,7 +320,7 @@ export function PreviewPanel({
             <button
               type="button"
               onClick={() => setViewportMode("desktop")}
-              className={`rounded-full px-3 py-1.5 text-sm font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2 ${
+              className={`rounded-full px-3 py-1.5 text-sm font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-1 ${
                 viewportMode === "desktop"
                   ? "bg-slate-900 text-white"
                   : "text-slate-600 hover:text-slate-900"
@@ -331,7 +331,7 @@ export function PreviewPanel({
             <button
               type="button"
               onClick={() => setViewportMode("mobile")}
-              className={`rounded-full px-3 py-1.5 text-sm font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2 ${
+              className={`rounded-full px-3 py-1.5 text-sm font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-1 ${
                 viewportMode === "mobile"
                   ? "bg-slate-900 text-white"
                   : "text-slate-600 hover:text-slate-900"
