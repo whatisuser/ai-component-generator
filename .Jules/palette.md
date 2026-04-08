@@ -1,3 +1,3 @@
-## 2025-04-07 - Keyboard Shortcut Hints as Visual Polish
-**Learning:** Adding a keyboard shortcut (Cmd/Ctrl + Enter) to text areas for form submission significantly improves the UX of heavy text-input interfaces like prompt forms. However, the true value is unlocked when the hint is elegantly displayed alongside the submit action. Hiding the visual hint from screen readers using `aria-hidden="true"` is a good practice because it avoids confusing auditory clutter—screen readers already provide distinct navigation paths for form submission, and focusing the "Generate" button remains perfectly accessible.
-**Action:** When adding keyboard shortcuts to interact with complex components, always pair them with a visual affordance, and consciously decide whether that affordance needs to be read aloud based on its necessity to the interaction.
+## 2026-04-01 - Keyboard shortcuts for textareas
+**Learning:** Adding keyboard shortcuts (Cmd+Enter/Ctrl+Enter) to textareas is a critical UX pattern for apps with prompt inputs. The shortcut hint (<kbd>) inside the submit button is a good discoverability pattern but it must also respect accessibility states (like loading).
+**Action:** When adding shortcuts to inputs, ensure visual hints are added to the submission target, and disabled correctly during loading/async states.
