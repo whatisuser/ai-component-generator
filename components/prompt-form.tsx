@@ -27,19 +27,17 @@ export function PromptForm({
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">
             Prompt
           </p>
-          <h2 className="text-2xl font-semibold tracking-tight text-slate-900">
+          <h2 id="prompt-heading" className="text-2xl font-semibold tracking-tight text-slate-900">
             Describe the component you want
           </h2>
-          <p className="text-sm leading-6 text-slate-600">
+          <p id="prompt-description" className="text-sm leading-6 text-slate-600">
             The mock generator returns production-shaped TSX so the UI and API
             contract work before integrating a real model provider.
           </p>
         </div>
-        <label className="sr-only" htmlFor="prompt">
-          Component prompt
-        </label>
         <textarea
           id="prompt"
+          aria-labelledby="prompt-heading prompt-description"
           value={prompt}
           onChange={(event) => onPromptChange(event.target.value)}
           onKeyDown={handleKeyDown}
