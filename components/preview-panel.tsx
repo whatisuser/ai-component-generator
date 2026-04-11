@@ -72,7 +72,10 @@ class PreviewRuntimeBoundary extends Component<
               Layout is still isolated in this viewport, but the rendered code
               is not trusted and can fail at runtime.
             </p>
-            <pre className="mt-4 overflow-auto rounded-2xl bg-rose-50 px-4 py-3 font-mono text-sm text-rose-700">
+        <pre
+          className="mt-4 overflow-auto rounded-2xl bg-rose-50 px-4 py-3 font-mono text-sm text-rose-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-400"
+          tabIndex={0}
+        >
               {this.state.error.message}
             </pre>
           </div>
@@ -125,7 +128,10 @@ function PreviewErrorCard({
         </p>
         <h3 className="mt-2 text-lg font-semibold text-slate-900">{title}</h3>
         <p className="mt-2 text-sm leading-6 text-slate-600">{description}</p>
-        <pre className="mt-4 overflow-auto rounded-2xl bg-rose-50 px-4 py-3 font-mono text-sm text-rose-700">
+        <pre
+          className="mt-4 overflow-auto rounded-2xl bg-rose-50 px-4 py-3 font-mono text-sm text-rose-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-400"
+          tabIndex={0}
+        >
           {details}
         </pre>
       </div>
@@ -315,6 +321,7 @@ export function PreviewPanel({
             type="button"
             onClick={handleCopyCode}
             disabled={!rawCode}
+            aria-live="polite"
             className="rounded-full border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-700 transition hover:border-slate-300 hover:text-slate-900 disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-1"
           >
             {copyState === "copied"
@@ -323,10 +330,15 @@ export function PreviewPanel({
                 ? "Copy failed"
                 : "Copy generated code"}
           </button>
-          <div className="flex items-center rounded-full border border-slate-200 bg-white p-1">
+          <div
+            className="flex items-center rounded-full border border-slate-200 bg-white p-1"
+            role="group"
+            aria-label="Preview viewport size"
+          >
             <button
               type="button"
               onClick={() => setViewportMode("desktop")}
+              aria-pressed={viewportMode === "desktop"}
               className={`rounded-full px-3 py-1.5 text-sm font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-1 ${
                 viewportMode === "desktop"
                   ? "bg-slate-900 text-white"
@@ -338,6 +350,7 @@ export function PreviewPanel({
             <button
               type="button"
               onClick={() => setViewportMode("mobile")}
+              aria-pressed={viewportMode === "mobile"}
               className={`rounded-full px-3 py-1.5 text-sm font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-1 ${
                 viewportMode === "mobile"
                   ? "bg-slate-900 text-white"
