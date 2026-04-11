@@ -26,7 +26,10 @@ export function CodePanel({ code, isLoading }: CodePanelProps) {
             invert
           />
         ) : code ? (
-          <pre className="h-full p-5 text-sm leading-7 text-slate-200 overflow-x-auto whitespace-pre-wrap break-all min-w-0">
+          <pre
+            className="h-full p-5 text-sm leading-7 text-slate-200 overflow-x-auto whitespace-pre-wrap break-all min-w-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-inset"
+            tabIndex={0}
+          >
             <code>{code}</code>
           </pre>
         ) : (
