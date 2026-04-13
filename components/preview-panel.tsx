@@ -327,6 +327,7 @@ export function PreviewPanel({
             <button
               type="button"
               onClick={() => setViewportMode("desktop")}
+              aria-pressed={viewportMode === "desktop"}
               className={`rounded-full px-3 py-1.5 text-sm font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-1 ${
                 viewportMode === "desktop"
                   ? "bg-slate-900 text-white"
@@ -338,6 +339,7 @@ export function PreviewPanel({
             <button
               type="button"
               onClick={() => setViewportMode("mobile")}
+              aria-pressed={viewportMode === "mobile"}
               className={`rounded-full px-3 py-1.5 text-sm font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-1 ${
                 viewportMode === "mobile"
                   ? "bg-slate-900 text-white"
