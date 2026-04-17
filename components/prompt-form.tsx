@@ -43,6 +43,7 @@ export function PromptForm({
           value={prompt}
           onChange={(event) => onPromptChange(event.target.value)}
           onKeyDown={handleKeyDown}
+          disabled={isLoading}
           placeholder="Build a pricing card with three tiers"
           className="min-h-36 w-full rounded-[1.4rem] border border-slate-200 bg-white px-4 py-3 text-sm leading-6 text-slate-900 shadow-inner outline-none transition focus:border-amber-400 focus:ring-4 focus:ring-amber-100 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-500"
         />
@@ -56,7 +57,8 @@ export function PromptForm({
           <button
             type="button"
             onClick={onSubmit}
-            disabled={isLoading}
+            disabled={isLoading || !prompt.trim()}
+            title={!prompt.trim() ? "Enter a prompt to generate" : ""}
             className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:bg-slate-400 sm:w-auto"
           >
             {isLoading && (
