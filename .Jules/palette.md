@@ -1,3 +1,7 @@
 ## 2026-04-05 - Adding visual feedback to async form submissions
 **Learning:** Combining a loading spinner alongside keyboard shortcuts (Cmd/Ctrl + Enter) significantly improves both perceived performance during async generation operations and the discoverability of power-user features. Users need an immediate visual cue that their keyboard shortcut worked.
 **Action:** When adding shortcut submissions to forms, ensure the visual disabled/loading state applies instantly and clearly since the user's focus is usually on the input rather than the submit button.
+
+## 2026-04-06 - Form state locking consistency
+**Learning:** Adding disabled styling (e.g., `disabled:bg-slate-50 disabled:cursor-not-allowed`) to a `<textarea>` or `<input>` is not enough; without the actual `disabled={isLoading}` HTML attribute, the element still accepts input while visually appearing disabled. This creates a highly confusing UX where a user expects the field to be locked but can accidentally modify state. Furthermore, disabling submission buttons immediately when a prompt is empty creates a smoother experience and prevents unexpected validation errors showing up in different areas of the UI.
+**Action:** When adding disabled styles, always ensure the corresponding HTML `disabled` attribute is bound to the same loading state. For forms, disable the submit action early if the input is empty to serve as an intuitive "empty state".
