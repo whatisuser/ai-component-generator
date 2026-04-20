@@ -326,6 +326,7 @@ export function PreviewPanel({
           <div className="flex items-center rounded-full border border-slate-200 bg-white p-1">
             <button
               type="button"
+              aria-pressed={viewportMode === "desktop"}
               onClick={() => setViewportMode("desktop")}
               className={`rounded-full px-3 py-1.5 text-sm font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-1 ${
                 viewportMode === "desktop"
@@ -337,6 +338,7 @@ export function PreviewPanel({
             </button>
             <button
               type="button"
+              aria-pressed={viewportMode === "mobile"}
               onClick={() => setViewportMode("mobile")}
               className={`rounded-full px-3 py-1.5 text-sm font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-1 ${
                 viewportMode === "mobile"
