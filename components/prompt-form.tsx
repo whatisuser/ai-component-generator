@@ -41,6 +41,7 @@ export function PromptForm({
         <textarea
           id="prompt"
           value={prompt}
+          disabled={isLoading}
           onChange={(event) => onPromptChange(event.target.value)}
           onKeyDown={handleKeyDown}
           placeholder="Build a pricing card with three tiers"
