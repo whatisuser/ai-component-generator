@@ -44,10 +44,11 @@ export function PromptForm({
           onChange={(event) => onPromptChange(event.target.value)}
           onKeyDown={handleKeyDown}
           placeholder="Build a pricing card with three tiers"
+          aria-describedby="prompt-description"
           className="min-h-36 w-full rounded-[1.4rem] border border-slate-200 bg-white px-4 py-3 text-sm leading-6 text-slate-900 shadow-inner outline-none transition focus:border-amber-400 focus:ring-4 focus:ring-amber-100 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-500"
         />
         <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
-          <p className="text-xs uppercase tracking-[0.18em] text-slate-400">
+          <p id="prompt-description" className="text-xs uppercase tracking-[0.18em] text-slate-400">
             Generates a single self-contained React component{" "}
             <span className="hidden sm:inline-block md:hidden lg:inline-block">
               — Press ⌘/Ctrl + Enter to submit
@@ -56,7 +57,8 @@ export function PromptForm({
           <button
             type="button"
             onClick={onSubmit}
-            disabled={isLoading}
+            disabled={isLoading || !prompt.trim()}
+            title={!prompt.trim() ? "Enter a prompt to generate" : undefined}
             className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:bg-slate-400 sm:w-auto"
           >
             {isLoading && (
