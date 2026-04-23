@@ -35,15 +35,44 @@ export function PromptForm({
             contract work before integrating a real model provider.
           </p>
         </div>
-        <textarea
-          id="prompt"
-          aria-labelledby="prompt-heading prompt-description"
-          value={prompt}
-          onChange={(event) => onPromptChange(event.target.value)}
-          onKeyDown={handleKeyDown}
-          placeholder="Build a pricing card with three tiers"
-          className="min-h-36 w-full rounded-[1.4rem] border border-slate-200 bg-white px-4 py-3 text-sm leading-6 text-slate-900 shadow-inner outline-none transition focus:border-amber-400 focus:ring-4 focus:ring-amber-100 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-500"
-        />
+        <div className="relative">
+          <textarea
+            id="prompt"
+            aria-labelledby="prompt-heading prompt-description"
+            value={prompt}
+            onChange={(event) => onPromptChange(event.target.value)}
+            onKeyDown={handleKeyDown}
+            placeholder="Build a pricing card with three tiers"
+            className="min-h-36 w-full rounded-[1.4rem] border border-slate-200 bg-white px-4 py-3 pr-12 text-sm leading-6 text-slate-900 shadow-inner outline-none transition focus:border-amber-400 focus:ring-4 focus:ring-amber-100 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-500"
+          />
+          {prompt.length > 0 && !isLoading && (
+            <button
+              type="button"
+              onClick={() => {
+                onPromptChange("");
+                document.getElementById("prompt")?.focus();
+              }}
+              aria-label="Clear prompt text"
+              title="Clear prompt text"
+              className="absolute right-4 top-3 rounded-full p-1 text-slate-400 hover:bg-slate-100 hover:text-slate-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M18 6 6 18" />
+                <path d="m6 6 12 12" />
+              </svg>
+            </button>
+          )}
+        </div>
         <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
           <p className="text-xs uppercase tracking-[0.18em] text-slate-400">
             Generates a single self-contained React component{" "}
@@ -54,7 +83,8 @@ export function PromptForm({
           <button
             type="button"
             onClick={onSubmit}
-            disabled={isLoading}
+            disabled={isLoading || !prompt.trim()}
+            title={!prompt.trim() && !isLoading ? "Enter a prompt description to generate a component" : undefined}
             className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:bg-slate-400 sm:w-auto"
           >
             {isLoading && (
