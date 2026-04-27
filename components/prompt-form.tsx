@@ -41,6 +41,7 @@ export function PromptForm({
           value={prompt}
           onChange={(event) => onPromptChange(event.target.value)}
           onKeyDown={handleKeyDown}
+          disabled={isLoading}
           placeholder="Build a pricing card with three tiers"
           className="min-h-36 w-full rounded-[1.4rem] border border-slate-200 bg-white px-4 py-3 text-sm leading-6 text-slate-900 shadow-inner outline-none transition focus:border-amber-400 focus:ring-4 focus:ring-amber-100 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-500"
         />
@@ -59,7 +60,7 @@ export function PromptForm({
           >
             {isLoading && (
               <svg
-                className="h-4 w-4 animate-spin text-white/70"
+                className="h-4 w-4 animate-spin text-white/70" aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"

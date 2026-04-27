@@ -18,7 +18,7 @@ export function CodePanel({ code, isLoading }: CodePanelProps) {
           </h2>
         </div>
       </div>
-      <div className="min-w-0 overflow-auto max-h-[20rem] lg:max-h-[32rem]">
+      <div className="min-w-0 overflow-auto max-h-[20rem] lg:max-h-[32rem] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-500 focus-visible:ring-inset" tabIndex={0} role="region" aria-label="Generated code">
         {isLoading ? (
           <LoadingState
             title="Generating component"
