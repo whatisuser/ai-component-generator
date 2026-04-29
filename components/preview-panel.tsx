@@ -315,6 +315,7 @@ export function PreviewPanel({
             type="button"
             onClick={handleCopyCode}
             disabled={!rawCode}
+            aria-live="polite"
             title={!rawCode ? "Generate a component first to copy its code" : undefined}
             className="rounded-full border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-700 transition hover:border-slate-300 hover:text-slate-900 disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-1"
           >
