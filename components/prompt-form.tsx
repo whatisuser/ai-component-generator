@@ -54,7 +54,8 @@ export function PromptForm({
           <button
             type="button"
             onClick={onSubmit}
-            disabled={isLoading}
+            disabled={isLoading || !prompt.trim()}
+            title={!prompt.trim() ? "Enter a prompt to generate a component" : undefined}
             className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:bg-slate-400 sm:w-auto"
           >
             {isLoading && (
