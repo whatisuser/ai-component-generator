@@ -95,7 +95,11 @@ function PreviewPlaceholder({
 }) {
   return (
     <div className="flex min-h-full items-center justify-center bg-slate-50 p-5">
-      <div className="w-full max-w-md rounded-3xl border border-slate-200 bg-white p-5 text-center shadow-sm">
+      <div
+        className="w-full max-w-md rounded-3xl border border-slate-200 bg-white p-5 text-center shadow-sm"
+        role="status"
+        aria-live="polite"
+      >
         {isLoading ? (
           <div aria-hidden="true" className="mx-auto h-10 w-10 animate-spin rounded-full border-4 border-slate-200 border-t-slate-500" />
         ) : (
@@ -119,7 +123,11 @@ function PreviewErrorCard({
 }) {
   return (
     <div className="flex min-h-full items-center justify-center bg-slate-50 p-5">
-      <div className="w-full max-w-lg rounded-3xl border border-rose-200 bg-white p-5 text-left shadow-sm">
+      <div
+        className="w-full max-w-lg rounded-3xl border border-rose-200 bg-white p-5 text-left shadow-sm"
+        role="alert"
+        aria-live="assertive"
+      >
         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-rose-600">
           Preview error
         </p>
@@ -315,6 +323,7 @@ export function PreviewPanel({
             type="button"
             onClick={handleCopyCode}
             disabled={!rawCode}
+            aria-live="polite"
             title={!rawCode ? "Generate a component first to copy its code" : undefined}
             className="rounded-full border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-700 transition hover:border-slate-300 hover:text-slate-900 disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-1"
           >
