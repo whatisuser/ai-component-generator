@@ -6,3 +6,7 @@
 **Learning:** When using visual toggle buttons that act as tabs or selectors (like the Desktop/Mobile viewport toggles in the Preview Panel), wrapping them in a `div` with `role="group"` and an `aria-label` makes their relationship clear to screen readers. Additionally, providing tooltips (via the `title` attribute) on disabled buttons is a highly effective way to explain *why* an action is disabled, preventing user confusion. For forms, using `aria-labelledby` to point to visible headings provides better context than hidden `sr-only` labels.
 
 **Action:** Ensure that all toggle button groups use `role="group"` and `aria-pressed`. For disabled buttons whose state might not be immediately obvious, always provide an explanatory `title` or tooltip. Prefer `aria-labelledby` linking to visible descriptive text over hidden labels.
+
+## 2024-05-10 - Clear button focus management
+**Learning:** When clearing input from a text area using an external absolute-positioned button, focus is naturally lost from the input. For users relying on keyboard navigation, dropping focus to the body is a jarring and inaccessible experience.
+**Action:** Always programmatically refocus (`document.getElementById("my-input")?.focus()`) the input/textarea immediately after a custom clear button click to maintain continuous keyboard flow.
