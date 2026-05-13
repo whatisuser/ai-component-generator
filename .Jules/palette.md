@@ -1,8 +1,5 @@
-## 2026-04-05 - Adding visual feedback to async form submissions
-**Learning:** Combining a loading spinner alongside keyboard shortcuts (Cmd/Ctrl + Enter) significantly improves both perceived performance during async generation operations and the discoverability of power-user features. Users need an immediate visual cue that their keyboard shortcut worked.
-**Action:** When adding shortcut submissions to forms, ensure the visual disabled/loading state applies instantly and clearly since the user's focus is usually on the input rather than the submit button.
-## 2024-05-19 - Improved Accessibility for Preview Panel and Form
+## 2024-05-24 - Disabled State Tailwind Classes on Input Elements
 
-**Learning:** When using visual toggle buttons that act as tabs or selectors (like the Desktop/Mobile viewport toggles in the Preview Panel), wrapping them in a `div` with `role="group"` and an `aria-label` makes their relationship clear to screen readers. Additionally, providing tooltips (via the `title` attribute) on disabled buttons is a highly effective way to explain *why* an action is disabled, preventing user confusion. For forms, using `aria-labelledby` to point to visible headings provides better context than hidden `sr-only` labels.
+**Learning:** When using Tailwind CSS, disabled state styling (e.g. `disabled:bg-slate-50 disabled:text-slate-500 disabled:cursor-not-allowed`) can be present on an input element but will not visually apply until the native `disabled` boolean attribute is dynamically toggled. If the boolean is missing during an active loading state, users lack clear visual feedback that the input is locked, which is confusing UX.
 
-**Action:** Ensure that all toggle button groups use `role="group"` and `aria-pressed`. For disabled buttons whose state might not be immediately obvious, always provide an explanatory `title` or tooltip. Prefer `aria-labelledby` linking to visible descriptive text over hidden labels.
+**Action:** Always verify that interactive inputs tied to async operations have both visual disabled classes defined AND the functional `disabled={isLoading}` attribute linked to state.
