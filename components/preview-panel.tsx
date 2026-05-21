@@ -307,7 +307,9 @@ export function PreviewPanel({
           <button
             type="button"
             onClick={() => setReloadKey((current) => current + 1)}
-            className="rounded-full border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-700 transition hover:border-slate-300 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-1"
+            disabled={!hasCode || isLoading}
+            title={!hasCode ? "Generate a component first to reload the preview" : isLoading ? "Wait for generation to complete" : undefined}
+            className="rounded-full border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-700 transition hover:border-slate-300 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-60"
           >
             Reload preview
           </button>
