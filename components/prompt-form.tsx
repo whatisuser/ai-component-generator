@@ -42,6 +42,7 @@ export function PromptForm({
           onChange={(event) => onPromptChange(event.target.value)}
           onKeyDown={handleKeyDown}
           placeholder="Build a pricing card with three tiers"
+          disabled={isLoading}
           className="min-h-36 w-full rounded-[1.4rem] border border-slate-200 bg-white px-4 py-3 text-sm leading-6 text-slate-900 shadow-inner outline-none transition focus:border-amber-400 focus:ring-4 focus:ring-amber-100 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-500"
         />
         <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
@@ -81,7 +82,7 @@ export function PromptForm({
             )}
             {isLoading ? "Generating..." : "Generate component"}
             {!isLoading && (
-              <span className="hidden sm:inline-flex text-slate-400 items-center border border-slate-600 rounded px-1.5 py-0.5 text-[10px] leading-none font-sans">
+              <span aria-hidden="true" className="hidden sm:inline-flex text-slate-400 items-center border border-slate-600 rounded px-1.5 py-0.5 text-[10px] leading-none font-sans">
                 <kbd className="font-sans">⌘</kbd>
                 <kbd className="font-sans ml-1">↵</kbd>
               </span>
