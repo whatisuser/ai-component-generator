@@ -6,3 +6,8 @@
 **Learning:** When using visual toggle buttons that act as tabs or selectors (like the Desktop/Mobile viewport toggles in the Preview Panel), wrapping them in a `div` with `role="group"` and an `aria-label` makes their relationship clear to screen readers. Additionally, providing tooltips (via the `title` attribute) on disabled buttons is a highly effective way to explain *why* an action is disabled, preventing user confusion. For forms, using `aria-labelledby` to point to visible headings provides better context than hidden `sr-only` labels.
 
 **Action:** Ensure that all toggle button groups use `role="group"` and `aria-pressed`. For disabled buttons whose state might not be immediately obvious, always provide an explanatory `title` or tooltip. Prefer `aria-labelledby` linking to visible descriptive text over hidden labels.
+## 2024-06-20 - Adding explanatory tooltips to disabled interactive elements
+
+**Learning:** Disabling buttons or input fields without explanation can lead to user frustration. When elements are correctly disabled visually and interactively using attributes and Tailwind classes, it's highly beneficial to add a native tooltip (using the `title` attribute) to provide context on why the element is disabled, greatly enhancing accessibility for all users.
+
+**Action:** Whenever applying `disabled` states to form elements based on missing input or loading status, ensure you also add a context-aware `title` attribute to explain the required action (e.g., `title="Enter a prompt to generate a component"`).
