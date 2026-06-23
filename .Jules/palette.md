@@ -6,3 +6,8 @@
 **Learning:** When using visual toggle buttons that act as tabs or selectors (like the Desktop/Mobile viewport toggles in the Preview Panel), wrapping them in a `div` with `role="group"` and an `aria-label` makes their relationship clear to screen readers. Additionally, providing tooltips (via the `title` attribute) on disabled buttons is a highly effective way to explain *why* an action is disabled, preventing user confusion. For forms, using `aria-labelledby` to point to visible headings provides better context than hidden `sr-only` labels.
 
 **Action:** Ensure that all toggle button groups use `role="group"` and `aria-pressed`. For disabled buttons whose state might not be immediately obvious, always provide an explanatory `title` or tooltip. Prefer `aria-labelledby` linking to visible descriptive text over hidden labels.
+## 2024-06-23 - Ensuring correct mapping of disabled state with Tailwind
+
+**Learning:** When adding `disabled:` classes in Tailwind (e.g. `disabled:cursor-not-allowed`, `disabled:opacity-50`), it's crucial to explicitly map the actual React/HTML `disabled` prop to the element. Without the `disabled` prop, the element is not technically disabled for accessibility/interaction purposes, and the CSS classes alone do not prevent user interaction. Additionally, providing tooltips (via the `title` attribute) on disabled form inputs and buttons is a highly effective way to explain *why* an action is disabled, preventing user confusion.
+
+**Action:** Whenever applying `disabled:` utility classes in Tailwind, verify that `disabled={isLoading}` (or similar) is also applied to the element. Always consider adding a `title` attribute to explain the disabled state on buttons and inputs.
