@@ -1,3 +1,9 @@
+## 2026-07-04 - Explaining disabled states and mapping CSS states to HTML props
+
+**Learning:** When applying Tailwind `disabled:` classes to form elements, it's crucial to explicitly pass the `disabled={...}` prop in the React component. Without it, the element remains fully interactive to screen readers and keyboard users, even if it looks disabled visually. Furthermore, when disabling interactive elements like submit buttons because of a lack of input, providing a native tooltip (e.g., using the `title` attribute) explaining *why* the button is disabled significantly improves the user experience and accessibility.
+
+**Action:** Always verify that HTML/React `disabled={...}` props are mapped when using Tailwind `disabled:` styling. Always add an explanatory tooltip to buttons disabled due to form state to clarify requirements to users.
+
 ## 2026-04-05 - Adding visual feedback to async form submissions
 **Learning:** Combining a loading spinner alongside keyboard shortcuts (Cmd/Ctrl + Enter) significantly improves both perceived performance during async generation operations and the discoverability of power-user features. Users need an immediate visual cue that their keyboard shortcut worked.
 **Action:** When adding shortcut submissions to forms, ensure the visual disabled/loading state applies instantly and clearly since the user's focus is usually on the input rather than the submit button.
