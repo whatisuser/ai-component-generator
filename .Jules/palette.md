@@ -6,3 +6,7 @@
 **Learning:** When using visual toggle buttons that act as tabs or selectors (like the Desktop/Mobile viewport toggles in the Preview Panel), wrapping them in a `div` with `role="group"` and an `aria-label` makes their relationship clear to screen readers. Additionally, providing tooltips (via the `title` attribute) on disabled buttons is a highly effective way to explain *why* an action is disabled, preventing user confusion. For forms, using `aria-labelledby` to point to visible headings provides better context than hidden `sr-only` labels.
 
 **Action:** Ensure that all toggle button groups use `role="group"` and `aria-pressed`. For disabled buttons whose state might not be immediately obvious, always provide an explanatory `title` or tooltip. Prefer `aria-labelledby` linking to visible descriptive text over hidden labels.
+
+## 2025-05-20 - Ensure Tailwind disabled classes map to HTML disabled attributes
+**Learning:** When using Tailwind CSS `disabled:` pseudo-class variants (like `disabled:bg-slate-400`), they only take effect and communicate state correctly to assistive technologies if the actual HTML `disabled` boolean attribute is applied to the element. We had a textarea with extensive disabled styling that remained fully interactive because the prop was missing.
+**Action:** Always verify that React/HTML `disabled={condition}` props are explicitly applied to form elements alongside any `disabled:` CSS classes, and provide an explanatory `title` on buttons disabled by empty inputs.
