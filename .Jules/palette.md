@@ -6,3 +6,7 @@
 **Learning:** When using visual toggle buttons that act as tabs or selectors (like the Desktop/Mobile viewport toggles in the Preview Panel), wrapping them in a `div` with `role="group"` and an `aria-label` makes their relationship clear to screen readers. Additionally, providing tooltips (via the `title` attribute) on disabled buttons is a highly effective way to explain *why* an action is disabled, preventing user confusion. For forms, using `aria-labelledby` to point to visible headings provides better context than hidden `sr-only` labels.
 
 **Action:** Ensure that all toggle button groups use `role="group"` and `aria-pressed`. For disabled buttons whose state might not be immediately obvious, always provide an explanatory `title` or tooltip. Prefer `aria-labelledby` linking to visible descriptive text over hidden labels.
+
+## 2026-08-27 - Prevent user edits during async generation and clarify empty states
+**Learning:** Users can lose typed data or become confused if a form input remains editable while an async action (like generation) is loading. Additionally, disabling a submit button without explanation can leave users wondering what is missing.
+**Action:** Always disable text inputs (e.g., textarea) during loading states, and when disabling a submit button due to an empty state, provide an explanatory native tooltip (e.g., title attribute) so users know exactly why it's disabled.
