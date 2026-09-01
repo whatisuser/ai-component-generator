@@ -6,3 +6,7 @@
 **Learning:** When using visual toggle buttons that act as tabs or selectors (like the Desktop/Mobile viewport toggles in the Preview Panel), wrapping them in a `div` with `role="group"` and an `aria-label` makes their relationship clear to screen readers. Additionally, providing tooltips (via the `title` attribute) on disabled buttons is a highly effective way to explain *why* an action is disabled, preventing user confusion. For forms, using `aria-labelledby` to point to visible headings provides better context than hidden `sr-only` labels.
 
 **Action:** Ensure that all toggle button groups use `role="group"` and `aria-pressed`. For disabled buttons whose state might not be immediately obvious, always provide an explanatory `title` or tooltip. Prefer `aria-labelledby` linking to visible descriptive text over hidden labels.
+
+## 2026-09-01 - Prevent prompt data loss during loading
+**Learning:** When users submit a form that takes a while to process (like generating a component), they might continue typing in the active input field. If the input isn't disabled during the loading state, their new input might be ignored or lost if the component fully resets.
+**Action:** Always ensure text inputs like \<textarea\> are disabled during async loading states (`disabled={isLoading}`) to prevent user edits from being lost, and clearly disable submit buttons when inputs are empty to prevent unnecessary requests, while providing an explanatory `title` tooltip to explain why the action is disabled.
