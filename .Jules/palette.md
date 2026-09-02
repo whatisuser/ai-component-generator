@@ -6,3 +6,7 @@
 **Learning:** When using visual toggle buttons that act as tabs or selectors (like the Desktop/Mobile viewport toggles in the Preview Panel), wrapping them in a `div` with `role="group"` and an `aria-label` makes their relationship clear to screen readers. Additionally, providing tooltips (via the `title` attribute) on disabled buttons is a highly effective way to explain *why* an action is disabled, preventing user confusion. For forms, using `aria-labelledby` to point to visible headings provides better context than hidden `sr-only` labels.
 
 **Action:** Ensure that all toggle button groups use `role="group"` and `aria-pressed`. For disabled buttons whose state might not be immediately obvious, always provide an explanatory `title` or tooltip. Prefer `aria-labelledby` linking to visible descriptive text over hidden labels.
+
+## 2026-09-02 - Prevent data loss during async operations
+**Learning:** Providing Tailwind `disabled:` classes without mapping the actual HTML `disabled` property leaves inputs accessible during async operations, risking data loss if users edit text while a submission is in progress. Adding an explanatory `title` during this disabled state reduces user friction.
+**Action:** Always map `disabled={isLoading}` on text inputs during form submissions and pair it with a `title` to explain the non-interactive state.
