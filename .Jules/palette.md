@@ -6,3 +6,7 @@
 **Learning:** When using visual toggle buttons that act as tabs or selectors (like the Desktop/Mobile viewport toggles in the Preview Panel), wrapping them in a `div` with `role="group"` and an `aria-label` makes their relationship clear to screen readers. Additionally, providing tooltips (via the `title` attribute) on disabled buttons is a highly effective way to explain *why* an action is disabled, preventing user confusion. For forms, using `aria-labelledby` to point to visible headings provides better context than hidden `sr-only` labels.
 
 **Action:** Ensure that all toggle button groups use `role="group"` and `aria-pressed`. For disabled buttons whose state might not be immediately obvious, always provide an explanatory `title` or tooltip. Prefer `aria-labelledby` linking to visible descriptive text over hidden labels.
+
+## 2024-05-20 - Ensuring Form Inputs are Disabled During Async Operations
+**Learning:** Users can lose data if they edit a textarea while a generation API request is in flight. Tailwind \`disabled:\` classes on the textarea were present but non-functional without the actual React prop.
+**Action:** Always explicitly map the \`disabled={isLoading}\` prop on form inputs during async operations so Tailwind's disabled styling actually activates and protects user data.
